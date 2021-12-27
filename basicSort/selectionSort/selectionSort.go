@@ -8,7 +8,7 @@ func selectionSort(a []int) []int {
 	for i := len(a) - 1; i > 0; i-- {
 		max := i
 		for j := 0; j < i-1; j++ {
-			if a[max] < a[j] {
+			if a[max] <= a[j] {
 				max = j
 			}
 		}
@@ -16,6 +16,5 @@ func selectionSort(a []int) []int {
 			a[max], a[i] = a[i], a[max]
 		}
 	}
-
 	return a
 }

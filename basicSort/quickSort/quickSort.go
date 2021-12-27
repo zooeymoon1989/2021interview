@@ -1,6 +1,7 @@
 package quickSort
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -20,7 +21,17 @@ func quickSort(a []int) []int {
 			left = append(left, a[i])
 		}
 	}
-	return append(quickSort(append(left, a[0])), quickSort(right)...)
+	left = append(left, a[0])
+	fmt.Printf("%+v\n", left)
+	fmt.Printf("%+v\n", right)
+	quickSort(left)
+	quickSort(right)
+
+	return a
+}
+
+func _quickSort(a []int) {
+
 }
 
 func pivot(n int) int {
