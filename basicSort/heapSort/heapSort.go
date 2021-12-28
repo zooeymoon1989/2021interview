@@ -17,12 +17,12 @@ func heapSort(a []int) []int {
 }
 
 func heapSlice(a []int, offset int) {
-	if offset*2+1 < len(a) && a[offset] < a[offset*2+1] {
+	if offset*2+1 < len(a) && a[offset] <= a[offset*2+1] {
 		a[offset], a[offset*2+1] = a[offset*2+1], a[offset]
 		heapSlice(a, offset*2+1)
 	}
 
-	if offset*2+2 < len(a) && a[offset] < a[offset*2+2] {
+	if offset*2+2 < len(a) && a[offset] <= a[offset*2+2] {
 		a[offset], a[offset*2+2] = a[offset*2+2], a[offset]
 		heapSlice(a, offset*2+2)
 	}

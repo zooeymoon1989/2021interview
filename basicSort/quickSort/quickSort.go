@@ -1,13 +1,18 @@
 package quickSort
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
 
 func quickSort(a []int) []int {
 	if len(a) < 2 {
+		return a
+	}
+	if len(a) == 2 {
+		if a[0] >= a[1] {
+			a[0], a[1] = a[1], a[0]
+		}
 		return a
 	}
 	p := pivot(len(a))
@@ -22,12 +27,7 @@ func quickSort(a []int) []int {
 		}
 	}
 	left = append(left, a[0])
-	fmt.Printf("%+v\n", left)
-	fmt.Printf("%+v\n", right)
-	quickSort(left)
-	quickSort(right)
-
-	return a
+	return append(quickSort(left), quickSort(right)...)
 }
 
 func _quickSort(a []int) {
