@@ -30,10 +30,6 @@ func quickSort(a []int) []int {
 	return append(quickSort(left), quickSort(right)...)
 }
 
-func _quickSort(a []int) {
-
-}
-
 func pivot(n int) int {
 	rand.Seed(time.Now().Unix())
 	return rand.Intn(n)
