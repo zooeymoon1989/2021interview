@@ -12,5 +12,4 @@ func TestQuickSort(t *testing.T) {
 		fmt.Printf("%+v\n", sortData.Data)
 		t.Errorf("this two are not the same")
 	}
-	fmt.Printf("%+v\n", quickSort(sortData.Data))
 }
