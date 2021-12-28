@@ -14,6 +14,17 @@ func countSort(a []int) []int {
 			max = a[i]
 		}
 	}
-
-	return a
+	m := make([]int, max-min+1)
+	var result []int
+	for i := 0; i < len(a); i++ {
+		m[a[i]-min]++
+	}
+	for i := 0; i < len(m); i++ {
+		k := m[i]
+		for k > 0 {
+			result = append(result, i+min)
+			k--
+		}
+	}
+	return result
 }
