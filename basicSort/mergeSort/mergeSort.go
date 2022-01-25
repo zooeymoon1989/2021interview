@@ -10,7 +10,7 @@ func mergeSort(a []int) []int {
 
 func conquer(left, right []int) []int {
 	var result []int
-	var i, j, k = 0, 0, 0
+	var i, j = 0, 0
 	for i < len(left) && j < len(right) {
 		if left[i] > right[j] {
 			result = append(result, right[j])
@@ -25,7 +25,6 @@ func conquer(left, right []int) []int {
 				result = append(result, right[j:]...)
 			}
 		}
-		k++
 	}
 	return result
 }
