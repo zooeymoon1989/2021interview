@@ -35,22 +35,22 @@ func main() {
 		return takeStream
 	}
 
-	jiagong := func(done <-chan interface{}, stream <-chan string, s string) <-chan string {
-		jiaGongstream := make(chan string)
+	process := func(done <-chan interface{}, stream <-chan string, s string) <-chan string {
+		processStream := make(chan string)
 		go func() {
-			defer close(jiaGongstream)
+			defer close(processStream)
 			for {
 				select {
 				case <-done:
 					return
-				case jiaGongstream <- <-stream + s:
+				case processStream <- <-stream + s:
 				}
 			}
 		}()
-		return jiaGongstream
+		return processStream
 	}
 
-	for a := range take(done, n, jiagong(done, jiagong(done, repeat(done, "a"), "b"), "c")) {
+	for a := range take(done, n, process(done, process(done, repeat(done, "a"), "b"), "c")) {
 		print(a)
 	}
 }
