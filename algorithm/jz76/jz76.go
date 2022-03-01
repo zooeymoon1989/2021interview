@@ -9,5 +9,17 @@ import . "interviewPractice/nc_tools"
  * @return ListNode类
  */
 func deleteDuplication(pHead *ListNode) *ListNode {
-	return nil
+	if pHead == nil || pHead.Next == nil {
+		return pHead
+	}
+	if pHead.Val != pHead.Next.Val {
+		pHead.Next = deleteDuplication(pHead.Next)
+		return pHead
+	} else {
+		tmp := pHead
+		for tmp != nil && tmp.Val == pHead.Val {
+			tmp = tmp.Next
+		}
+		return deleteDuplication(tmp)
+	}
 }
